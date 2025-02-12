@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import { dbConnection } from "./database/database.connector.mjs";
+import Router from "./routes/user.routes.mjs";
 
 dbConnection();
 
@@ -23,6 +24,8 @@ app.use(
 app.get("/", (request, response) => {
   return response.send("Server is running");
 });
+
+app.get("/api/auth", Router);
 
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
